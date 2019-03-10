@@ -1,5 +1,5 @@
 # Degree Navigator 2.0
-## by team-orange
+_by team-orange_
 _repo for the cmd-f hackathon_
 
 Visualizing your UBC Computer Science Degree web application built with React.js !
