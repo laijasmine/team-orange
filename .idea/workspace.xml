@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a1c3d84-9de7-4489-a378-e13e385585f7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/controller/Course.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Course.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/CreditCounter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/CreditCounter.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,14 +22,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller/CreditCounter.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
+            <state relative-caret-position="187">
+              <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
               <folding>
                 <element signature="e#811#827#0" />
                 <element signature="e#824#1514#0" />
                 <element signature="e#883#1110#0" />
-                <element signature="e#853#1104#0" />
-                <element signature="e#889#1098#0" />
                 <element signature="e#2329#2337#0" />
                 <element signature="e#2447#2471#0" />
                 <element signature="e#2367#2415#0" />
@@ -43,7 +42,6 @@
                 <element signature="e#8630#8975#0" />
                 <element signature="e#8707#8915#0" />
                 <element signature="e#8778#8905#0" />
-                <element signature="e#4048#4092#0" />
                 <element signature="e#4141#4190#0" />
                 <element signature="e#4239#4288#0" />
                 <element signature="e#4339#4388#0" />
@@ -77,8 +75,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/Course.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="55" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
+            <state relative-caret-position="34">
+              <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -100,6 +98,7 @@
       <find>General</find>
       <find>lowerle</find>
       <find>LowerLe</find>
+      <find>grade</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -108,17 +107,17 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/controller/Course.ts" />
         <option value="$PROJECT_DIR$/src/controller/TextToCourseConverter.ts" />
         <option value="$PROJECT_DIR$/src/controller/CourseRequirements.ts" />
+        <option value="$PROJECT_DIR$/src/controller/Course.ts" />
         <option value="$PROJECT_DIR$/src/controller/CreditCounter.ts" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="width" value="978" />
-    <option name="height" value="1039" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="952" />
+    <option name="width" value="977" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -183,19 +182,19 @@
       <option name="presentableId" value="Default" />
       <updated>1552172019272</updated>
       <workItem from="1552172020582" duration="5746000" />
-      <workItem from="1552178569805" duration="13155000" />
+      <workItem from="1552178569805" duration="13691000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18901000" />
+    <option name="totallyTimeSpent" value="19437000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="762" y="0" width="781" height="830" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49926794" weight="0.46601942" />
-      <window_info id="Structure" order="1" sideWeight="0.50073206" side_tool="true" visible="true" weight="0.16845638" />
+      <window_info id="Structure" order="1" sideWeight="0.50073206" side_tool="true" weight="0.3481276" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -223,13 +222,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/controller/Course.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="55" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/CourseRequirements.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="581">
@@ -237,16 +229,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/Course.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/CreditCounter.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
+        <state relative-caret-position="187">
+          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
           <folding>
             <element signature="e#811#827#0" />
             <element signature="e#824#1514#0" />
             <element signature="e#883#1110#0" />
-            <element signature="e#853#1104#0" />
-            <element signature="e#889#1098#0" />
             <element signature="e#2329#2337#0" />
             <element signature="e#2447#2471#0" />
             <element signature="e#2367#2415#0" />
@@ -261,7 +258,6 @@
             <element signature="e#8630#8975#0" />
             <element signature="e#8707#8915#0" />
             <element signature="e#8778#8905#0" />
-            <element signature="e#4048#4092#0" />
             <element signature="e#4141#4190#0" />
             <element signature="e#4239#4288#0" />
             <element signature="e#4339#4388#0" />

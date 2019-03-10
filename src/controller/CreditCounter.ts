@@ -23,14 +23,9 @@ export default class CreditCounter {
         );
     }
 
-    // TODO: get data from website and convert to courses
-    public parseToCourses(input: any) {
-        for (let course of input) {
-            let name;
-            let id;
-            let grade;
-            let credit;
-            let newCourse = new Course(name, id, grade, credit);
+    public parseToCourses(nameAndIDs: any[], credits: any[]) {
+        for (let i = 0; i < nameAndIDs.length; i++) {
+            let newCourse = new Course(nameAndIDs[i], credits[i]);
             this.myCourses.push(newCourse);
         }
     }
@@ -204,10 +199,6 @@ export default class CreditCounter {
     }
 
     // GENERAL CHECKS
-
-    public isPassed(course: Course): boolean {
-        return course.grade !== "F";
-    }
 
     public is300Level(course: Course): boolean {
         return Number(course.id[0]) == 3;

@@ -1,14 +1,12 @@
 export class Course {
     public name: string;
     public id: string;
-    public grade: string;
     public credit: number;
 
 
-    constructor(name: string, id: string, grade: string, credit: number) {
-        this.name = name;
-        this.id = id;
-        this.grade = grade;
+    constructor(nameAndID: string, credit: number) {
+        this.name = nameAndID.split(" ")[0];
+        this.id = nameAndID.split(" ")[1];
         this.credit = credit;
     }
 }
