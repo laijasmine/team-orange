@@ -1,25 +1,26 @@
 {
-  "name": "argaid",
-  "homepage": "http://namix.me/ArgAid",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "bootstrap": "^3.3.7",
-    "npm": "^6.0.1",
-    "react": "^16.3.2",
-    "react-bootstrap": "^0.32.1",
-    "react-dom": "^16.3.2",
-    "react-scripts": "1.1.4"
-  },
+  "name": "team-orange",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
-    "gh-pages": "^1.2.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laijasmine/team-orange.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/laijasmine/team-orange/issues"
+  },
+  "homepage": "https://github.com/laijasmine/team-orange#readme",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "react": "^16.8.4",
+    "react-bootstrap": "^1.0.0-beta.5",
+    "react-dom": "^16.8.4",
+    "reactstrap": "^7.1.0"
   }
 }
