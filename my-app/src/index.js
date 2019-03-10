@@ -43,16 +43,16 @@ CPSC 110	103	85	A	2017W	1	BSC	1	4.0	80\n	`,
 		this.handleInput = this.handleInput.bind(this);
 	}
 	handleInput = (event) =>{
-		this.setState({
-			input: event.target.value,
-			classes: decodeClass.processString(event.target.value),
-			inProgressClasses: decodeClass.processInProgressClasses(event.target.value),
-			degreeTitle: "BSc, Major Computer Science",
-			totalCredits: decodeClass.calculateTotalCredit(event.target.value),
-			generalScience: decodeClass.calculateScienceCredit(event.target.value),
-			lowerLevel: decodeClass.calculateLowerLevelCredit(event.target.value),
-			upperLevel: decodeClass.calculateUpperLevelCredit(event.target.value)
-		});
+		// this.setState({
+		// 	input: event.target.value,
+		// 	classes: decodeClass.processString(event.target.value),
+		// 	inProgressClasses: decodeClass.processInProgressClasses(event.target.value),
+		// 	degreeTitle: "BSc, Major Computer Science",
+		// 	totalCredits: decodeClass.calculateTotalCredit(event.target.value),
+		// 	generalScience: decodeClass.calculateScienceCredit(event.target.value),
+		// 	lowerLevel: decodeClass.calculateLowerLevelCredit(event.target.value),
+		// 	upperLevel: decodeClass.calculateUpperLevelCredit(event.target.value)
+		// });
 		console.log(this.state);
 	}
 	handleClick = (event) =>{
@@ -96,11 +96,14 @@ class LowerLevel extends React.Component{
 	render(){
 		return(
 			<div>
-				<div className="text-center" id="TooltipExample2">Lower Level Requirements:  28/41 &#9432;</div>
+				<div className="text-center" id="TooltipExample2">Lower Level Requirements:  34/47 &#9432;</div>
 				<Tooltip placement="right" isOpen={this.state.tooltipOpen} target="TooltipExample2" toggle={this.toggle}>
           		These are all your first and second year level courses. Click on Details for Detailed description.
        			</Tooltip>
-				<Progress color="info" value={this.props.input} max="41">Completed</Progress>
+				<Progress multi>
+					<Progress bar color="info" value="24" max="47">Completed</Progress>
+					<Progress bar color="warning" value="10" max="47">In Progress</Progress>
+				</Progress>
 				<br></br>
 				<LowerLevelInfo/>
 			</div>
@@ -511,8 +514,8 @@ class SecondYearInfo extends React.Component{
        			</Tooltip>
 				<div className="text-left" id="TooltipExample12">Second Year Requirement: 17/23 &#9432;</div>
 				<Progress multi>
-					<Progress bar color="info" value="7" max="24">Completed</Progress>
-					<Progress bar color="warning" value="10">In Progress</Progress>
+					<Progress bar color="info" value="7" max="23">Completed</Progress>
+					<Progress bar color="warning" value="10" max="23">In Progress</Progress>
 				</Progress>
 				Applicable Courses: <span className="text-success">CPSC 210 (4), PHYS 100 (3), </span><span className="text-warning"> CPSC 221 (4), MATH 221 (3), STAT 251 (3)</span>
 				<br></br>
