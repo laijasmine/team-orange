@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a1c3d84-9de7-4489-a378-e13e385585f7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/team-orange.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/Course.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/CourseRequirements.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/CreditCounter.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/CreditCounter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/CreditCounter.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,8 +21,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller/CreditCounter.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="100" column="28" lean-forward="true" selection-start-line="100" selection-start-column="28" selection-end-line="100" selection-end-column="28" />
+            <state relative-caret-position="202">
+              <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
               <folding>
                 <element signature="e#811#827#0" />
                 <element signature="e#824#1514#0" />
@@ -42,22 +32,8 @@
                 <element signature="e#2329#2337#0" />
                 <element signature="e#2447#2471#0" />
                 <element signature="e#2367#2415#0" />
-                <element signature="e#5012#5028#0" />
-                <element signature="e#2537#2561#0" />
-                <element signature="e#4140#4172#0" />
+                <element signature="e#2267#4445#0" />
                 <element signature="e#2536#2611#0" />
-                <element signature="e#5081#5097#0" />
-                <element signature="e#5144#5168#0" />
-                <element signature="e#5200#5232#0" />
-                <element signature="e#5185#5201#0" />
-                <element signature="e#3363#3387#0" />
-                <element signature="e#3402#3434#0" />
-                <element signature="e#5241#5257#0" />
-                <element signature="e#3190#3214#0" />
-                <element signature="e#3232#3264#0" />
-                <element signature="e#5300#5316#0" />
-                <element signature="e#5825#7768#0" />
-                <element signature="e#7702#7758#0" />
                 <element signature="e#5216#5276#0" />
                 <element signature="e#5382#5745#0" />
                 <element signature="e#5484#5685#0" />
@@ -207,19 +183,19 @@
       <option name="presentableId" value="Default" />
       <updated>1552172019272</updated>
       <workItem from="1552172020582" duration="5746000" />
-      <workItem from="1552178569805" duration="12291000" />
+      <workItem from="1552178569805" duration="13155000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18037000" />
+    <option name="totallyTimeSpent" value="18901000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49926794" weight="0.46601942" />
-      <window_info active="true" id="Structure" order="1" sideWeight="0.50073206" side_tool="true" visible="true" weight="0.16845638" />
+      <window_info id="Structure" order="1" sideWeight="0.50073206" side_tool="true" visible="true" weight="0.16845638" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -234,7 +210,7 @@
       <window_info anchor="bottom" id="Problems" order="9" weight="0.3288889" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.3288889" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.32796487" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -263,8 +239,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/CreditCounter.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="100" column="28" lean-forward="true" selection-start-line="100" selection-start-column="28" selection-end-line="100" selection-end-column="28" />
+        <state relative-caret-position="202">
+          <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
           <folding>
             <element signature="e#811#827#0" />
             <element signature="e#824#1514#0" />
@@ -274,22 +250,8 @@
             <element signature="e#2329#2337#0" />
             <element signature="e#2447#2471#0" />
             <element signature="e#2367#2415#0" />
-            <element signature="e#5012#5028#0" />
-            <element signature="e#2537#2561#0" />
-            <element signature="e#4140#4172#0" />
+            <element signature="e#2267#4445#0" />
             <element signature="e#2536#2611#0" />
-            <element signature="e#5081#5097#0" />
-            <element signature="e#5144#5168#0" />
-            <element signature="e#5200#5232#0" />
-            <element signature="e#5185#5201#0" />
-            <element signature="e#3363#3387#0" />
-            <element signature="e#3402#3434#0" />
-            <element signature="e#5241#5257#0" />
-            <element signature="e#3190#3214#0" />
-            <element signature="e#3232#3264#0" />
-            <element signature="e#5300#5316#0" />
-            <element signature="e#5825#7768#0" />
-            <element signature="e#7702#7758#0" />
             <element signature="e#5216#5276#0" />
             <element signature="e#5382#5745#0" />
             <element signature="e#5484#5685#0" />

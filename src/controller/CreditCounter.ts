@@ -1,10 +1,12 @@
 import {Course} from "./Course";
+import CourseRequirements from "./CourseRequirements";
 
 export default class CreditCounter {
     // ASSUME: Everyone is CPSC Major - choose major
     private myCourses: any[] = [];
     private usedCourses: any[] = [];
     private facultyCourses: Map<any, any[]> = new Map<any, any[]>();
+    private req = new CourseRequirements();
 
     public setupFacultyCourses(): void {
         this.facultyCourses.set("Faculty of Arts", ["ACAM", "AFST", "ANTH", "ARBC", "ARCL", "ARTC", "ARTH", "ARTS",
@@ -21,7 +23,7 @@ export default class CreditCounter {
         );
     }
 
-    // TODO: get data from website to parseGo through all and if I've used it somewhere, don't use it again
+    // TODO: get data from website and convert to courses
     public parseToCourses(input: any) {
         for (let course of input) {
             let name;
@@ -45,34 +47,38 @@ export default class CreditCounter {
     // does not account for CPSC 110 (or 103 and 107)
     public countCSRequirement(): number {
         let credit = 0;
-        for (let course of this.myCourses) {
-            const CPSC110 = course.name === "CPSC" && course.id === "110";
-            const CPSC103 = course.name === "CPSC" && course.id === "103";
-            const CPSC107 = course.name === "CPSC" && course.id === "107";
-            const CPSC121 = course.name === "CPSC" && course.id === "121";
-            const MATH100 = course.name === "MATH" && course.id === "100";
-            const MATH102 = course.name === "MATH" && course.id === "102";
-            const MATH104 = course.name === "MATH" && course.id === "104";
-            const MATH101 = course.name === "MATH" && course.id === "101";
-            const MATH103 = course.name === "MATH" && course.id === "103";
-            const MATH105 = course.name === "MATH" && course.id === "105";
-            const CPSC210 = course.name === "CPSC" && course.id === "210";
-            const CPSC213 = course.name === "CPSC" && course.id === "213";
-            const CPSC221 = course.name === "CPSC" && course.id === "221";
-            const MATH200 = course.name === "MATH" && course.id === "200";
-            const MATH221 = course.name === "MATH" && course.id === "221";
-            const STAT241 = course.name === "STAT" && course.id === "241";
-            const STAT251 = course.name === "STAT" && course.id === "251";
-            const CPSC310 = course.name === "CPSC" && course.id === "310";
-            const CPSC313 = course.name === "CPSC" && course.id === "313";
-            const CPSC3XX = course.name === "CPSC" && this.is300Level(course);
-            const CPSC4XX = course.name === "CPSC" && this.is400Level(course);
-            if (CPSC110 || CPSC103 || CPSC107 || CPSC121 || CPSC121 || MATH100 ||
-                MATH102 || MATH104 || MATH101 || MATH103 || MATH105 || CPSC210 || CPSC213 ||
-                CPSC221 || MATH200 || MATH221 || STAT241 || STAT251 || CPSC310 || CPSC313 ||
-                CPSC3XX || CPSC4XX) {
-                credit += course.credit;
+        while (credit < this.req.getTotalCSCredit()) {
+            for (let course of this.myCourses) {
+                const CPSC110 = course.name === "CPSC" && course.id === "110";
+                const CPSC103 = course.name === "CPSC" && course.id === "103";
+                const CPSC107 = course.name === "CPSC" && course.id === "107";
+                const CPSC121 = course.name === "CPSC" && course.id === "121";
+                const MATH100 = course.name === "MATH" && course.id === "100";
+                const MATH102 = course.name === "MATH" && course.id === "102";
+                const MATH104 = course.name === "MATH" && course.id === "104";
+                const MATH101 = course.name === "MATH" && course.id === "101";
+                const MATH103 = course.name === "MATH" && course.id === "103";
+                const MATH105 = course.name === "MATH" && course.id === "105";
+                const CPSC210 = course.name === "CPSC" && course.id === "210";
+                const CPSC213 = course.name === "CPSC" && course.id === "213";
+                const CPSC221 = course.name === "CPSC" && course.id === "221";
+                const MATH200 = course.name === "MATH" && course.id === "200";
+                const MATH221 = course.name === "MATH" && course.id === "221";
+                const STAT241 = course.name === "STAT" && course.id === "241";
+                const STAT251 = course.name === "STAT" && course.id === "251";
+                const CPSC310 = course.name === "CPSC" && course.id === "310";
+                const CPSC313 = course.name === "CPSC" && course.id === "313";
+                const CPSC3XX = course.name === "CPSC" && this.is300Level(course);
+                const CPSC4XX = course.name === "CPSC" && this.is400Level(course);
+                if ((CPSC110 || CPSC103 || CPSC107 || CPSC121 || CPSC121 || MATH100 ||
+                    MATH102 || MATH104 || MATH101 || MATH103 || MATH105 || CPSC210 || CPSC213 ||
+                    CPSC221 || MATH200 || MATH221 || STAT241 || STAT251 || CPSC310 || CPSC313 ||
+                    CPSC3XX || CPSC4XX) && this.isNotUsed(course)) {
+                    credit += course.credit;
+                    this.usedCourses.push(course);
+                }
             }
+            break;
         }
         return credit;
     }
@@ -89,10 +95,14 @@ export default class CreditCounter {
 
     public countCommunicationsRequirement(): number {
         let credit = 0;
-        for (let course of this.myCourses) {
-            if (this.isCommunications(course)) {
-                credit += course.credit;
+        while (credit < this.req.getTotalCommCredit()) {
+            for (let course of this.myCourses) {
+                if (this.isCommunications(course) && this.isNotUsed(course)) {
+                    credit += course.credit;
+                    this.usedCourses.push(course);
+                }
             }
+            break;
         }
         return credit;
     }
@@ -100,55 +110,67 @@ export default class CreditCounter {
     // 12+ credits, Faculty of Arts (excludign GEOB and PSYC X60+)
     public countArtsRequirement(): number {
         let credit = 0;
-        for (let course of this.myCourses) {
-            if (this.isArts(course)) {
-                credit += course.credit;
+        while (credit > this.req.getTotalArtsCredit()) {
+            for (let course of this.myCourses) {
+                if (this.isArts(course) && this.isNotUsed(course)) {
+                    credit += course.credit;
+                    this.usedCourses.push(course);
+                }
             }
+            break;
         }
         return credit;
     }
 
     public countBreadthRequirement(): number {
         let credit = 0;
-        for (let course of this.myCourses) {
-            if (this.isBreadth(course)) {
-                credit += course.credit;
+        while (credit < this.req.getTotalBreadthCredit()) {
+            for (let course of this.myCourses) {
+                if (this.isBreadth(course) && this.isNotUsed(course)) {
+                    credit += course.credit;
+                    this.usedCourses.push(course);
+                }
             }
+            break;
         }
         return credit;
     }
 
     public countLowerLevelRequirement(): number {
         let credit = 0;
-        for (let course of this.myCourses) {
-            const ASTR101 = course.name === "ASTR" && course.id === "101";
-            const ASTR102 = course.name === "ASTR" && course.id === "102";
-            const BIOL112 = course.name === "BIOL" && course.id === "112";
-            const BIOL121 = course.name === "BIOL" && course.id === "121";
-            const EOSC110 = course.name === "EOSC" && course.id === "110";
-            const EOSC114 = course.name === "EOSC" && course.id === "114";
-            const GEOB101 = course.name === "GEOB" && course.id === "101";
-            const GEOB102 = course.name === "GEOB" && course.id === "102";
-            const GEOB103 = course.name === "GEOB" && course.id === "103";
-            const MATH180 = course.name === "MATH" && course.id === "180";
-            const MATH184 = course.name === "MATH" && course.id === "184";
-            const MATH100 = course.name === "MATH" && course.id === "100";
-            const MATH102 = course.name === "MATH" && course.id === "102";
-            const MATH104 = course.name === "MATH" && course.id === "104";
-            const MATH120 = course.name === "MATH" && course.id === "120";
-            const CHEM121 = course.name === "CHEM" && course.id === "121";
-            const CHEM123 = course.name === "CHEM" && course.id === "123";
-            const PHYS101 = course.name === "PHYS" && course.id === "101";
-            const PHYS117 = course.name === "PHYS" && course.id === "117";
-            const PHYS118 = course.name === "PHYS" && course.id === "118";
-            const PHYS107 = course.name === "PHYS" && course.id === "107";
-            const PHYS108 = course.name === "PHYS" && course.id === "108";
-            if (ASTR101 || ASTR102 || BIOL112 || BIOL121 || EOSC110 || EOSC114 ||
-                GEOB101 || GEOB102 || GEOB103 || MATH180 || MATH184 || MATH100 || MATH102 ||
-                MATH104 || MATH120 || CHEM121 || CHEM123 || PHYS101 || PHYS117 || PHYS118 ||
-                PHYS107 || PHYS108) {
-                credit += course.credit;
+        while (credit < this.req.getTotalLowerLevelCredit()) {
+            for (let course of this.myCourses) {
+                const ASTR101 = course.name === "ASTR" && course.id === "101";
+                const ASTR102 = course.name === "ASTR" && course.id === "102";
+                const BIOL112 = course.name === "BIOL" && course.id === "112";
+                const BIOL121 = course.name === "BIOL" && course.id === "121";
+                const EOSC110 = course.name === "EOSC" && course.id === "110";
+                const EOSC114 = course.name === "EOSC" && course.id === "114";
+                const GEOB101 = course.name === "GEOB" && course.id === "101";
+                const GEOB102 = course.name === "GEOB" && course.id === "102";
+                const GEOB103 = course.name === "GEOB" && course.id === "103";
+                const MATH180 = course.name === "MATH" && course.id === "180";
+                const MATH184 = course.name === "MATH" && course.id === "184";
+                const MATH100 = course.name === "MATH" && course.id === "100";
+                const MATH102 = course.name === "MATH" && course.id === "102";
+                const MATH104 = course.name === "MATH" && course.id === "104";
+                const MATH120 = course.name === "MATH" && course.id === "120";
+                const CHEM121 = course.name === "CHEM" && course.id === "121";
+                const CHEM123 = course.name === "CHEM" && course.id === "123";
+                const PHYS101 = course.name === "PHYS" && course.id === "101";
+                const PHYS117 = course.name === "PHYS" && course.id === "117";
+                const PHYS118 = course.name === "PHYS" && course.id === "118";
+                const PHYS107 = course.name === "PHYS" && course.id === "107";
+                const PHYS108 = course.name === "PHYS" && course.id === "108";
+                if ((ASTR101 || ASTR102 || BIOL112 || BIOL121 || EOSC110 || EOSC114 ||
+                    GEOB101 || GEOB102 || GEOB103 || MATH180 || MATH184 || MATH100 || MATH102 ||
+                    MATH104 || MATH120 || CHEM121 || CHEM123 || PHYS101 || PHYS117 || PHYS118 ||
+                    PHYS107 || PHYS108) && this.isNotUsed(course)) {
+                    credit += course.credit;
+                    this.usedCourses.push(course);
+                }
             }
+            break;
         }
         return credit;
     }
@@ -180,6 +202,8 @@ export default class CreditCounter {
         }
         return scienceCredits;
     }
+
+    // GENERAL CHECKS
 
     public isPassed(course: Course): boolean {
         return course.grade !== "F";
@@ -255,4 +279,7 @@ export default class CreditCounter {
         return false;
     }
 
+    public isNotUsed(course: Course) {
+        return this.usedCourses.includes(course);
+    }
 }
