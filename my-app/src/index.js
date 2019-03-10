@@ -7,7 +7,8 @@ import { Progress,
 		 Button,
 		 Collapse,
 		 Card,
-		 CardBody } from 'reactstrap';
+		 CardBody,
+		 Glyphicon } from 'reactstrap';
 var decodeClass = require('./decodecore.js');
 
 class TextDecode extends React.Component{
@@ -95,11 +96,11 @@ class LowerLevel extends React.Component{
 	render(){
 		return(
 			<div>
-				<div className="text-center" id="TooltipExample2">Lower Level Requirements:  28/41</div>
+				<div className="text-center" id="TooltipExample2">Lower Level Requirements:  28/41 &#9432;</div>
 				<Tooltip placement="right" isOpen={this.state.tooltipOpen} target="TooltipExample2" toggle={this.toggle}>
-          		These are all your first year and second year level courses. Click on Details for Detailed description.
+          		These are all your first and second year level courses. Click on Details for Detailed description.
        			</Tooltip>
-				<Progress color="info" value={this.props.input}/>
+				<Progress color="info" value={this.props.input} max="41">Completed</Progress>
 				<br></br>
 				<LowerLevelInfo/>
 			</div>
@@ -123,7 +124,7 @@ class UpperLevel extends React.Component{
 	render(){
 		return(
 			<div>
-				<div className="text-center" id="TooltipExample">Upper Level Requirements: {this.props.input}/48</div>
+				<div className="text-center" id="TooltipExample">Upper Level Requirements: {this.props.input}/48 &#9432;</div>
 				<Tooltip placement="right" isOpen={this.state.tooltipOpen} target="TooltipExample" toggle={this.toggle}>
           		These are all your 300/400-level courses. 
        			</Tooltip>
@@ -157,10 +158,7 @@ class UpperLevelInfo extends React.Component{
         <Collapse isOpen={this.state.collapse}>
           <Card>
             <CardBody>
-            Anim pariatur cliche reprehenderit,
-             enim eiusmod high life accusamus terry richardson ad squid. Nihil
-             anim keffiyeh helvetica, craft beer labore wes anderson cred
-             nesciunt sapiente ea proident.
+            	<ThirdAndFourthYear/>
             </CardBody>
           </Card>
         </Collapse>
@@ -221,6 +219,8 @@ class TotalCreditsInfo extends React.Component{
           <Card>
             <CardBody>
             	<CommunicationInfo/>
+            	<ArtsInfo/>
+            	<ElectivesInfo/>
             </CardBody>
           </Card>
         </Collapse>
@@ -232,6 +232,7 @@ class TotalCreditsInfo extends React.Component{
 class CommunicationInfo extends React.Component{
 	constructor(props){
 		super(props);
+		this.toggle = this.toggle.bind(this);
 		this.state = {
       	tooltipOpen: false
     	};
@@ -246,14 +247,83 @@ class CommunicationInfo extends React.Component{
 	render(){
 		return (
 			<div>
-				<div className="text-left" >Communications Requirement: 6/6</div>
+			<Tooltip placement="right" isOpen={this.state.tooltipOpen} target="TooltipExample9" toggle={this.toggle}>
+          		Take 2 of ENGL 100/110/111/112/120/121, SCIE 113/300, APSC 176, ASTU 100/150, WRDS 150, or their equivalents.
+       			</Tooltip>
+				<div className="text-left" id="TooltipExample9">Communications Requirement: 6/6 &#9432;</div>
 				<Progress multi>
 					<Progress bar color="success" value="6" max="6">6 Completed</Progress>
 					<Progress bar color="warning" value="0" max="0"></Progress>
 				</Progress>
+				Applicable Courses: <span className="text-success">SCIE 113 (3), ENGL 112 (3)</span> 
+				<br></br>
 				<br></br>
 			</div>
 			);
+	}
+}
+
+class ElectivesInfo  extends React.Component{
+	constructor(props){
+		super(props);
+		this.toggle = this.toggle.bind(this);
+		this.state = {
+      	tooltipOpen: false
+    	};
+	}
+
+	toggle() {
+		this.setState({
+		  tooltipOpen: !this.state.tooltipOpen
+		});
+  	}
+	render(){
+		return (
+			<div>
+			<Tooltip placement="right" isOpen={this.state.tooltipOpen} target="TooltipExample8" toggle={this.toggle}>
+          		9 credits from non CPSC/MATH/STAT in Arts or Science, and all other elective courses counts towards your electives total.
+       			</Tooltip>
+				<div className="text-left" id="TooltipExample8">Electives Requirement: 0/27 &#9432;</div>
+				<Progress multi>
+					<Progress bar color="success" value="0" max="12"></Progress>
+					<Progress bar color="warning" value="0" max="0"></Progress>
+				</Progress>
+				Applicable Courses: <span className="text-danger">n/a</span> 
+				<br></br>
+				</div>
+				);
+	}
+}
+
+class ArtsInfo  extends React.Component{
+	constructor(props){
+		super(props);
+		this.toggle = this.toggle.bind(this);
+		this.state = {
+      	tooltipOpen: false
+    	};
+	}
+
+	toggle() {
+		this.setState({
+		  tooltipOpen: !this.state.tooltipOpen
+		});
+  	}
+	render(){
+		return (
+			<div>
+			<Tooltip placement="right" isOpen={this.state.tooltipOpen} target="TooltipExample7" toggle={this.toggle}>
+          		Any classes in the Faculty of Arts counts towards your Arts Requirement total.
+       			</Tooltip>
+				<div className="text-left" id="TooltipExample7">Arts Requirement: 3/12 &#9432;</div>
+				<Progress multi>
+					<Progress bar color="success" value="0" max="12"></Progress>
+					<Progress bar color="warning" value="3" max="0">In Progress</Progress>
+				</Progress>
+				Applicable Courses: <span className="text-warning">PSYC 102 (3)</span> 
+				<br></br><br></br>
+				</div>
+				);
 	}
 }
 
@@ -274,10 +344,8 @@ class LowerLevelInfo extends React.Component{
         <Collapse isOpen={this.state.collapse}>
           <Card>
             <CardBody>
-            Anim pariatur cliche reprehenderit,
-             enim eiusmod high life accusamus terry richardson ad squid. Nihil
-             anim keffiyeh helvetica, craft beer labore wes anderson cred
-             nesciunt sapiente ea proident.
+            	<FirstYearInfo/>
+            	<SecondYearInfo/>
             </CardBody>
           </Card>
         </Collapse>
@@ -304,12 +372,12 @@ class GeneralScience extends React.Component{
 	render(){
 		return (
 			<div>
-				<div className="text-center" id="TooltipExample3">General Science Requirement: {this.props.input}/72</div>
+				<div className="text-center" id="TooltipExample3">General Science Requirement: {this.props.input}/72 &#9432;</div>
 				<Tooltip placement="right" isOpen={this.state.tooltipOpen} target="TooltipExample3" toggle={this.toggle}>
           		These are all your science classes. Any classes in the Faculty of Science counts towards your total.
        			</Tooltip>
 				<Progress multi>
-					<Progress bar color="info" value="28">28 Completed</Progress>
+					<Progress bar color="info" value="28" max="72">28 Completed</Progress>
 					<Progress bar color="warning" value="10">10</Progress>
 				</Progress>
 				<br></br>
@@ -336,16 +404,148 @@ class GeneralScienceInfo extends React.Component{
         <Collapse isOpen={this.state.collapse}>
           <Card>
             <CardBody>
-            Anim pariatur cliche reprehenderit,
-             enim eiusmod high life accusamus terry richardson ad squid. Nihil
-             anim keffiyeh helvetica, craft beer labore wes anderson cred
-             nesciunt sapiente ea proident.
+            	<GeneralScienceInfoSpecific/>
             </CardBody>
           </Card>
         </Collapse>
       </div>
     );
   }
+}
+
+class GeneralScienceInfoSpecific extends React.Component{
+	constructor(props){
+		super(props);
+		this.toggle = this.toggle.bind(this);
+		this.state = {
+      	tooltipOpen: false
+    	};
+	}
+
+	toggle() {
+		this.setState({
+		  tooltipOpen: !this.state.tooltipOpen
+		});
+  	}
+	render(){
+		return (
+			<div>
+			<Tooltip placement="right" isOpen={this.state.tooltipOpen} target="TooltipExample10" toggle={this.toggle}>
+          		Any classes in the Faculty of Science counts towards your total.
+       			</Tooltip>
+				<div className="text-left" id="TooltipExample10">Science Requirement: 38/72 &#9432;</div>
+				<Progress multi>
+					<Progress bar color="info" value="28" max="72">Completed</Progress>
+					<Progress bar color="warning" value="10" max="0">In Progress</Progress>
+				</Progress>
+				Applicable Courses: <span className="text-success">CPSC 110 (4), CPSC 121 (4), CPSC 210 (4), CPSC 221 (4), MATH 105 (3), MATH 184 (4), PHYS 100, PHYS 101, SCIE 113, </span> 
+				<span className="text-warning">CPSC 221, MATH 221, STAT 251</span>
+				<br></br><br></br>
+				</div>
+				);
+	}
+}
+
+class FirstYearInfo extends React.Component{
+	constructor(props){
+		super(props);
+		this.toggle = this.toggle.bind(this);
+		this.state = {
+      	tooltipOpen: false
+    	};
+	}
+
+	toggle() {
+		this.setState({
+		  tooltipOpen: !this.state.tooltipOpen
+		});
+  	}
+	render(){
+		return (
+			<div>
+			<Tooltip placement="right" isOpen={this.state.tooltipOpen} target="TooltipExample11" toggle={this.toggle}>
+          		Depending on your high school credits, you can pick different courses to fufill your Physical Science and Biology requirements.
+       			</Tooltip>
+				<div className="text-left" id="TooltipExample11">First Year Requirement: 17/23 &#9432;</div>
+				<Progress multi>
+					<Progress bar color="info" value="17" max="23">Completed</Progress>
+					<Progress bar color="warning" value="0" max="0"></Progress>
+				</Progress>
+				Applicable Courses: <span className="text-success">CPSC 110 (4), CPSC 121 (4), MATH 184 (3), MATH 105 (3), PHYS 101</span>
+				<br></br>
+				<span className="text-danger">Missing: 3 credits in 100-level Physics, Biology Requirement</span>
+				<br></br><br></br>
+				</div>
+				);
+	}
+}
+
+class SecondYearInfo extends React.Component{
+	constructor(props){
+		super(props);
+		this.toggle = this.toggle.bind(this);
+		this.state = {
+      	tooltipOpen: false
+    	};
+	}
+
+	toggle() {
+		this.setState({
+		  tooltipOpen: !this.state.tooltipOpen
+		});
+  	}
+	render(){
+		return (
+			<div>
+			<Tooltip placement="right" isOpen={this.state.tooltipOpen} target="TooltipExample12" toggle={this.toggle}>
+          		CPSC 210 & 213 & 221, MATH 200 & 221, and either (STAT 200 and MATH/STAT 302) or (STAT 241/251 and electives).
+       			</Tooltip>
+				<div className="text-left" id="TooltipExample12">Second Year Requirement: 17/23 &#9432;</div>
+				<Progress multi>
+					<Progress bar color="info" value="7" max="24">Completed</Progress>
+					<Progress bar color="warning" value="10">In Progress</Progress>
+				</Progress>
+				Applicable Courses: <span className="text-success">CPSC 210 (4), PHYS 100 (3), </span><span className="text-warning"> CPSC 221 (4), MATH 221 (3), STAT 251 (3)</span>
+				<br></br>
+				<span className="text-danger">Missing: CPSC 213, MATH 200</span>
+				<br></br><br></br>
+				</div>
+				);
+	}
+}
+
+class ThirdAndFourthYear extends React.Component{
+	constructor(props){
+		super(props);
+		this.toggle = this.toggle.bind(this);
+		this.state = {
+      	tooltipOpen: false
+    	};
+	}
+
+	toggle() {
+		this.setState({
+		  tooltipOpen: !this.state.tooltipOpen
+		});
+  	}
+	render(){
+		return (
+			<div>
+			<Tooltip placement="right" isOpen={this.state.tooltipOpen} target="TooltipExample13" toggle={this.toggle}>
+          		CPSC 310 & 313 & 320, 9 credits from 300-level CPSC courses, 9 credits from 400-level CPSC courses
+       			</Tooltip>
+				<div className="text-left" id="TooltipExample13">Third and Fourth Year Requirement: 0/28 &#9432;</div>
+				<Progress multi>
+					<Progress bar color="info" value="0" max="28"></Progress>
+					<Progress bar color="warning" value="0"></Progress>
+				</Progress>
+				Applicable Courses: <span className="text-danger">n/a</span>
+				<br></br>
+				<span className="text-danger">Missing: CPSC 310 & CPSC 313 & CPSC 320, 9 credits each from 300-level and 400-level CPSC courses (18 total)</span>
+				<br></br><br></br>
+				</div>
+				);
+	}
 }
 
 class DegreeTitle extends React.Component{
