@@ -3,7 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Progress,
-		 Tooltip } from 'reactstrap';
+		 Tooltip,
+		 Button,
+		 Collapse,
+		 Card,
+		 CardBody } from 'reactstrap';
 var decodeClass = require('./decodecore.js');
 
 class TextDecode extends React.Component{
@@ -91,12 +95,13 @@ class LowerLevel extends React.Component{
 	render(){
 		return(
 			<div>
-				<div className="text-center" id="TooltipExample2">Lower Level Requirements: {this.props.input}/24</div>
+				<div className="text-center" id="TooltipExample2">Lower Level Requirements:  28/41</div>
 				<Tooltip placement="right" isOpen={this.state.tooltipOpen} target="TooltipExample2" toggle={this.toggle}>
           		These are all your first year and second year level courses. Click on Details for Detailed description.
        			</Tooltip>
 				<Progress color="info" value={this.props.input}/>
 				<br></br>
+				<LowerLevelInfo/>
 			</div>
 			);
 	}
@@ -129,28 +134,159 @@ class UpperLevel extends React.Component{
 				</Progress>
 				</div>
 				<br></br>
+				<UpperLevelInfo/>
 			</div>
 			);
 	}
 }
 
+class UpperLevelInfo extends React.Component{
+	constructor(props) {
+    super(props);
+    this.toggle = this.toggle.bind(this);
+    this.state = { collapse: false };
+  }
+
+  toggle() {
+    this.setState(state => ({ collapse: !state.collapse }));
+  }
+  render(){
+  	return (
+  		<div>
+  			<Button color="primary" size="sm" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Detailed Breakdown</Button>
+        <Collapse isOpen={this.state.collapse}>
+          <Card>
+            <CardBody>
+            Anim pariatur cliche reprehenderit,
+             enim eiusmod high life accusamus terry richardson ad squid. Nihil
+             anim keffiyeh helvetica, craft beer labore wes anderson cred
+             nesciunt sapiente ea proident.
+            </CardBody>
+          </Card>
+        </Collapse>
+      </div>
+      );
+  }
+}
+
 class TotalCredits extends React.Component{
+	constructor(props){
+		super(props);
+		this.toggle = this.toggle.bind(this);
+		this.state = {
+      	tooltipOpen: false
+    	};
+	}
+	toggle() {
+    this.setState({
+      tooltipOpen: !this.state.tooltipOpen
+    });
+  }
 	render(){
 		return(
 			<div>
-				<div className="text-center">
+				<div className="text-center" id="TooltipExample4">
         		Cumulative Total Credits: {this.props.input}/120</div>
         		<div>
+        		<Tooltip placement="right" isOpen={this.state.tooltipOpen} target="TooltipExample4" toggle={this.toggle}>
+          		These are all of your courses. 
+       			</Tooltip>
         		<Progress multi>
 					<Progress bar color="info" value="31">Completed</Progress>
 					<Progress bar color="warning" value="13">In Progress</Progress>
 				</Progress>
 				</div>
 				<br></br>
+				<TotalCreditsInfo/>
 			</div>
 			);
 	}
 }
+
+class TotalCreditsInfo extends React.Component{
+	constructor(props) {
+    super(props);
+    this.toggle = this.toggle.bind(this);
+    this.state = { collapse: false };
+  }
+
+  toggle() {
+    this.setState(state => ({ collapse: !state.collapse }));
+  }
+  render() {
+    return (
+      <div>
+        <Button color="primary" size="sm" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Detailed Breakdown</Button>
+        <Collapse isOpen={this.state.collapse}>
+          <Card>
+            <CardBody>
+            	<CommunicationInfo/>
+            </CardBody>
+          </Card>
+        </Collapse>
+      </div>
+    );
+  }
+}
+
+class CommunicationInfo extends React.Component{
+	constructor(props){
+		super(props);
+		this.state = {
+      	tooltipOpen: false
+    	};
+	}
+
+	toggle() {
+		this.setState({
+		  tooltipOpen: !this.state.tooltipOpen
+		});
+  	}
+
+	render(){
+		return (
+			<div>
+				<div className="text-left" >Communications Requirement: 6/6</div>
+				<Progress multi>
+					<Progress bar color="success" value="6" max="6">6 Completed</Progress>
+					<Progress bar color="warning" value="0" max="0"></Progress>
+				</Progress>
+				<br></br>
+			</div>
+			);
+	}
+}
+
+class LowerLevelInfo extends React.Component{
+	constructor(props) {
+    super(props);
+    this.toggle = this.toggle.bind(this);
+    this.state = { collapse: false };
+  }
+
+  toggle() {
+    this.setState(state => ({ collapse: !state.collapse }));
+  }
+  render() {
+    return (
+      <div>
+        <Button color="primary" size="sm" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Detailed Breakdown</Button>
+        <Collapse isOpen={this.state.collapse}>
+          <Card>
+            <CardBody>
+            Anim pariatur cliche reprehenderit,
+             enim eiusmod high life accusamus terry richardson ad squid. Nihil
+             anim keffiyeh helvetica, craft beer labore wes anderson cred
+             nesciunt sapiente ea proident.
+            </CardBody>
+          </Card>
+        </Collapse>
+      </div>
+    );
+  }
+}
+
+
 
 class GeneralScience extends React.Component{
 	constructor(props){
@@ -168,24 +304,57 @@ class GeneralScience extends React.Component{
 	render(){
 		return (
 			<div>
-				<div className="text-center">General Science Requirement: {this.props.input}/72</div>
-				<Tooltip placement="right" isOpen={this.state.tooltipOpen} target="TooltipExample" toggle={this.toggle}>
+				<div className="text-center" id="TooltipExample3">General Science Requirement: {this.props.input}/72</div>
+				<Tooltip placement="right" isOpen={this.state.tooltipOpen} target="TooltipExample3" toggle={this.toggle}>
           		These are all your science classes. Any classes in the Faculty of Science counts towards your total.
        			</Tooltip>
 				<Progress multi>
-					<Progress bar color="info" value="28">Completed</Progress>
-					<Progress bar color="warning" value="10">In Progress</Progress>
+					<Progress bar color="info" value="28">28 Completed</Progress>
+					<Progress bar color="warning" value="10">10</Progress>
 				</Progress>
 				<br></br>
+				<GeneralScienceInfo/>
 			</div>
 			);
 	}
 }
 
+class GeneralScienceInfo extends React.Component{
+	constructor(props) {
+    super(props);
+    this.toggle = this.toggle.bind(this);
+    this.state = { collapse: false };
+  }
+
+  toggle() {
+    this.setState(state => ({ collapse: !state.collapse }));
+  }
+  render() {
+    return (
+      <div>
+        <Button color="primary" size="sm" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Detailed Breakdown</Button>
+        <Collapse isOpen={this.state.collapse}>
+          <Card>
+            <CardBody>
+            Anim pariatur cliche reprehenderit,
+             enim eiusmod high life accusamus terry richardson ad squid. Nihil
+             anim keffiyeh helvetica, craft beer labore wes anderson cred
+             nesciunt sapiente ea proident.
+            </CardBody>
+          </Card>
+        </Collapse>
+      </div>
+    );
+  }
+}
+
 class DegreeTitle extends React.Component{
 	render(){
 		return(
-			<h5 className="text-center">Degree Title: {this.props.input}</h5>
+			<div>
+				<h5 className="text-center">Degree Title: {this.props.input}</h5>
+				<h6 className="text-center">2 requirements met out of 7</h6>
+			</div>
 			)
 	}
 }
@@ -193,7 +362,7 @@ class DegreeTitle extends React.Component{
 class Nothing extends React.Component{
 	render(){
 		return(
-			<h1 className="text-center">Degree navigator</h1>
+			<h1 className="text-center">Degree Navigator</h1>
 
 			);
 	}
