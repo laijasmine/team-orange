@@ -255,7 +255,9 @@ class CommunicationInfo extends React.Component{
 					<Progress bar color="success" value="6" max="6">6 Completed</Progress>
 					<Progress bar color="warning" value="0" max="0"></Progress>
 				</Progress>
-				Applicable Courses: <span className="text-success">SCIE 113 (3), ENGL 112 (3)</span> 
+				Applicable Courses: <span className="text-success">SCIE 113 (3), ENGL 112 (3)</span>
+				<br></br>
+				<span className="text-danger">Missing: <span className="text-success">None</span> </span> 
 				<br></br>
 				<br></br>
 			</div>
@@ -290,6 +292,8 @@ class ElectivesInfo  extends React.Component{
 				</Progress>
 				Applicable Courses: <span className="text-danger">n/a</span> 
 				<br></br>
+				<span className="text-danger">Missing: More elective courses</span> 
+				<br></br>
 				</div>
 				);
 	}
@@ -321,7 +325,10 @@ class ArtsInfo  extends React.Component{
 					<Progress bar color="warning" value="3" max="0">In Progress</Progress>
 				</Progress>
 				Applicable Courses: <span className="text-warning">PSYC 102 (3)</span> 
-				<br></br><br></br>
+				<br></br>
+				<span className="text-danger">Missing: More Arts courses</span> 
+				<br></br>
+				<br></br>
 				</div>
 				);
 	}
@@ -440,7 +447,9 @@ class GeneralScienceInfoSpecific extends React.Component{
 				</Progress>
 				Applicable Courses: <span className="text-success">CPSC 110 (4), CPSC 121 (4), CPSC 210 (4), CPSC 221 (4), MATH 105 (3), MATH 184 (4), PHYS 100, PHYS 101, SCIE 113, </span> 
 				<span className="text-warning">CPSC 221, MATH 221, STAT 251</span>
-				<br></br><br></br>
+				<br></br>
+				<span className="text-danger">Missing: More Science courses</span> 
+				<br></br>
 				</div>
 				);
 	}
@@ -553,7 +562,7 @@ class DegreeTitle extends React.Component{
 		return(
 			<div>
 				<h5 className="text-center">Degree Title: {this.props.input}</h5>
-				<h6 className="text-center">2 requirements met out of 7</h6>
+				<h6 className="text-center"><span className="text-success"> 2 </span> requirements met out of 7</h6>
 			</div>
 			)
 	}
