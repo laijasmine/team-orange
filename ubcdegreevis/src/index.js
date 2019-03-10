@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 var decodeClass = require('./decodecore.js');
-var uiClass = require('./ui.js');
 
 class TextDecode extends React.Component{
 	constructor(props){
@@ -16,10 +15,11 @@ class TextDecode extends React.Component{
 	handleInput = (event) =>{
 		this.setState({
 			input: event.target.value,
+			classes: decodeClass.processString(event.target.value)
 		});
 	}
 	handleClick = (event) =>{
-		ReactDOM.render(<ResultTable input={this.state.input}/>, document.getElementById('root'));
+		ReactDOM.render(<ResultTable input={this.state.classes}/>, document.getElementById('root'));
 	}
 	render(){
 		return (
