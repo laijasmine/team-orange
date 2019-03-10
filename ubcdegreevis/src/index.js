@@ -8,18 +8,23 @@ class TextDecode extends React.Component{
 		super(props);
 		this.state = {
 			input: "",
-			classes: []
+			classes: [],
+			totalCredits: 0
 		}
 		this.handleInput = this.handleInput.bind(this);
 	}
 	handleInput = (event) =>{
 		this.setState({
 			input: event.target.value,
-			classes: decodeClass.processString(event.target.value)
+			classes: decodeClass.processString(event.target.value),
+			totalCredits: decodeClass.calculateTotalCredit(event.target.value)
 		});
+		console.log(this.state);
 	}
 	handleClick = (event) =>{
-		ReactDOM.render(<ResultTable input={this.state.classes}/>, document.getElementById('root'));
+		// ReactDOM.render(<TotalCredits input={this.state.totalCredits}/>, document.getElementById('totalCredits'));
+		ReactDOM.render(<Nothing/>, document.getElementById('root'));
+		ReactDOM.render(<TotalCredits input={this.state.totalCredits}/>, document.getElementById('totalCredits'));
 	}
 	render(){
 		return (
@@ -36,13 +41,23 @@ class TextDecode extends React.Component{
 
 }
 
-class ResultTable extends React.Component{
+
+class TotalCredits extends React.Component{
 	render(){
 		return(
 			<div id="Result">
-				<h1>Degree navigator</h1>
-				<p>{this.props.input}</p>
+				<progress value={this.props.input} max="120"></progress>
+				<p>Total Credits: {this.props.input}/120</p>
 			</div>
+			);
+	}
+}
+
+class Nothing extends React.Component{
+	render(){
+		return(
+			<h1>Degree navigator</h1>
+
 			);
 	}
 }
