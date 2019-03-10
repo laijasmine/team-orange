@@ -10,6 +10,13 @@ export function processString(input){
 	return result;
 }
 
+export function processInProgressClasses(input){
+	var regex = /[A-Z]{4} [0-9]{3}.+[^(W)]\n/g; //include in progress courses
+	var total = input.match(regex);
+	var completed = processString(input);
+	return total.diff(completed);
+}
+
 export function calculateTotalCredit(input){
 	var total = /[0-9]\.[0]/g;
 	var result = input.match(total);
@@ -20,11 +27,25 @@ export function calculateTotalCredit(input){
 	return sum;
 }
 
+export function calculateTotalCreditArray(input){
+	var total = /[0-9]\.[0]/g;
+	var result = input.match(total);
+	return result;
+}
+
 function getSum(total, num) {
   return +total + +num;
 }
 
 export function calculateScienceCredit(input){
+	return 0;
+}
+
+export function calculateUpperLevelCredit(input){
+	return 0;
+}
+
+export function calculateLowerLevelCredit(input){
 	return 0;
 }
 
