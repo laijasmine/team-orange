@@ -1,6 +1,6 @@
 # Degree Navigator 2.0
 _by team-orange_
-_repo for the cmd-f hackathon_
+**2nd place winner at the [cmd-f hackathon](http://cmd-f.nwplus.io/)**
 
 Visualizing your UBC Computer Science Degree web application built with React.js !
 
