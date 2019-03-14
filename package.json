@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -15,12 +17,16 @@
   "bugs": {
     "url": "https://github.com/laijasmine/team-orange/issues"
   },
-  "homepage": "https://github.com/laijasmine/team-orange#readme",
+  "homepage": "https://laijasmine.github.io/team-orange",
   "dependencies": {
     "bootstrap": "^4.3.1",
     "react": "^16.8.4",
     "react-bootstrap": "^1.0.0-beta.5",
     "react-dom": "^16.8.4",
-    "reactstrap": "^7.1.0"
+    "reactstrap": "^7.1.0",
+    "save-dev": "^2.0.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
   }
 }
